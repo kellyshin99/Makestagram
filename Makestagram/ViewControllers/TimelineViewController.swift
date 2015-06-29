@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Bond
 
 class TimelineViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -19,7 +20,7 @@ class TimelineViewController: UIViewController {
         //instantiate photo taking class, provide callback for when photo is selected
         photoTakingHelper = PhotoTakingHelper(viewController: self.tabBarController!) { (image: UIImage?) in
             let post = Post()
-            post.image = image
+            post.image.value = image!
             post.uploadPost()
         }
     }
@@ -39,11 +40,6 @@ class TimelineViewController: UIViewController {
             (result: [AnyObject]?, error: NSError?) -> Void in
             self.posts = result as? [Post] ?? []
         
-            for post in self.posts {
-                let data = post.imageFile?.getData()
-                post.image = UIImage(data: data!, scale: 1.0)
-            }
-            
             self.tableView.reloadData()
         }
     }
@@ -73,7 +69,11 @@ extension TimelineViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCell") as! PostTableViewCell
-        cell.postImageView.image = posts[indexPath.row].image
+        
+        let post = posts[indexPath.row]
+        post.downloadImage()
+        cell.post = post
+        
         return cell
     }
     
