@@ -8,6 +8,7 @@
 
 import UIKit
 import Bond
+import Parse
 
 class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
@@ -21,7 +22,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
-        
+        post?.toggleLikePost(PFUser.currentUser()!)
     }
     
     var post:Post? {
