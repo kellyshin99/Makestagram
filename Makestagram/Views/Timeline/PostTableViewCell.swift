@@ -11,6 +11,18 @@ import Bond
 
 class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var likesIconImageview: UIImageView!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
+    
+    @IBAction func moreButtonTapped(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        
+    }
     
     var post:Post? {
         didSet {

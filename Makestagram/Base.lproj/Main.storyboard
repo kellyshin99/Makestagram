@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wY6-fO-mgz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Photo View Controller-->
@@ -58,22 +59,113 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="320" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JRo-jz-ZLb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="470" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JRo-jz-ZLb">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="320" id="5dy-TF-a7M" customClass="PostTableViewCell" customModule="Makestagram" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="470" id="5dy-TF-a7M" customClass="PostTableViewCell" customModule="Makestagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5dy-TF-a7M" id="yeE-LK-qgh">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6r-BC-5Aj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="319"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2R-hn-wka">
+                                                    <rect key="frame" x="544" y="401" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="e8q-3c-rW6"/>
+                                                        <constraint firstAttribute="height" constant="44" id="rIB-az-0yy"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                                    <state key="normal" image="Heart">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="selected" image="Heart Selected"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZl-QG-v4p">
+                                                    <rect key="frame" x="8" y="407" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="QAw-Xs-SC9"/>
+                                                        <constraint firstAttribute="width" constant="44" id="gTz-Ka-fLc"/>
+                                                        <constraint firstAttribute="height" constant="44" id="w9a-Lf-3Ig"/>
+                                                    </constraints>
+                                                    <state key="normal" image="More">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="QAw-Xs-SC9"/>
+                                                        </mask>
+                                                    </variation>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="HpZ-DJ-nvC">
+                                                    <rect key="frame" x="20" y="367" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Qkm-dU-bih"/>
+                                                        <constraint firstAttribute="height" constant="44" id="fqF-uz-iMR"/>
+                                                        <constraint firstAttribute="width" constant="20" id="rcu-fW-igu"/>
+                                                        <constraint firstAttribute="width" constant="44" id="s7w-iU-AWZ"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="fqF-uz-iMR"/>
+                                                            <exclude reference="s7w-iU-AWZ"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test User" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-FL-puy">
+                                                    <rect key="frame" x="60" y="366" width="434" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="f17-FV-OgM"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6r-BC-5Aj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="344"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="319" id="3tL-gM-hah"/>
+                                                        <constraint firstAttribute="height" constant="344" id="D0k-FH-pow"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="344" id="TGP-sL-fwL"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="3tL-gM-hah"/>
+                                                            <exclude reference="TGP-sL-fwL"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="o6r-BC-5Aj" firstAttribute="top" secondItem="yeE-LK-qgh" secondAttribute="top" id="29z-TK-4Fb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="o6r-BC-5Aj" secondAttribute="trailing" id="3zD-pC-zDJ"/>
+                                                <constraint firstItem="o6r-BC-5Aj" firstAttribute="leading" secondItem="yeE-LK-qgh" secondAttribute="leadingMargin" id="5e0-Ny-h56"/>
+                                                <constraint firstItem="EZl-QG-v4p" firstAttribute="leading" secondItem="yeE-LK-qgh" secondAttribute="leadingMargin" id="7cg-YZ-dQ1"/>
+                                                <constraint firstItem="HpZ-DJ-nvC" firstAttribute="leading" secondItem="yeE-LK-qgh" secondAttribute="leadingMargin" constant="12" id="7h2-8c-1kY"/>
+                                                <constraint firstItem="a2R-hn-wka" firstAttribute="leading" secondItem="aTC-FL-puy" secondAttribute="trailing" constant="50" id="AqV-hU-oUz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a2R-hn-wka" secondAttribute="trailing" constant="4" id="D2y-1R-obU"/>
+                                                <constraint firstItem="EZl-QG-v4p" firstAttribute="top" secondItem="aTC-FL-puy" secondAttribute="bottom" constant="20" id="L0M-8j-y4n"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="EZl-QG-v4p" secondAttribute="bottom" constant="10" id="QdI-Ff-vvF"/>
+                                                <constraint firstAttribute="trailing" secondItem="o6r-BC-5Aj" secondAttribute="trailing" id="RGd-bU-YRe"/>
+                                                <constraint firstItem="EZl-QG-v4p" firstAttribute="top" secondItem="HpZ-DJ-nvC" secondAttribute="bottom" constant="20" id="dSy-Op-OWb"/>
+                                                <constraint firstItem="o6r-BC-5Aj" firstAttribute="top" secondItem="yeE-LK-qgh" secondAttribute="topMargin" id="egH-x1-zCA"/>
+                                                <constraint firstItem="o6r-BC-5Aj" firstAttribute="leading" secondItem="yeE-LK-qgh" secondAttribute="leading" id="etq-8g-7qN"/>
+                                                <constraint firstItem="aTC-FL-puy" firstAttribute="leading" secondItem="HpZ-DJ-nvC" secondAttribute="trailing" constant="20" id="zPL-A1-zXW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="a2R-hn-wka" secondAttribute="bottom" constant="16" id="zxQ-E1-HqY"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="3zD-pC-zDJ"/>
+                                                    <exclude reference="5e0-Ny-h56"/>
+                                                    <exclude reference="egH-x1-zCA"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="likeButton" destination="a2R-hn-wka" id="YVO-cT-Vyx"/>
+                                            <outlet property="likesIconImageview" destination="HpZ-DJ-nvC" id="mxs-k1-qp1"/>
+                                            <outlet property="likesLabel" destination="aTC-FL-puy" id="BIr-QQ-7bQ"/>
+                                            <outlet property="moreButton" destination="EZl-QG-v4p" id="ksc-tF-W3S"/>
                                             <outlet property="postImageView" destination="o6r-BC-5Aj" id="dGR-jh-oMo"/>
                                         </connections>
                                     </tableViewCell>
@@ -125,7 +217,10 @@
     </scenes>
     <resources>
         <image name="Camera" width="40" height="30"/>
+        <image name="Heart" width="72" height="68"/>
+        <image name="Heart Selected" width="72" height="68"/>
         <image name="Home" width="38" height="36"/>
+        <image name="More" width="26" height="17"/>
         <image name="People" width="42" height="42"/>
     </resources>
 </document>
