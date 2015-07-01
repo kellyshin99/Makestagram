@@ -25,11 +25,16 @@ class PostTableViewCell: UITableViewCell {
         post?.toggleLikePost(PFUser.currentUser()!)
     }
     
+    var likeBond: Bond<[PFUser]?>!
+    
     var post:Post? {
         didSet {
             if let post = post {
                 // bind the image of the post to the 'postImage" view
                 post.image ->> postImageView
+                
+                // bind the likeBond that we defined earlier, to update like label and button when likes change
+                post.likes ->> likeBond
             }
         }
     }
@@ -45,4 +50,31 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    // Generates a comma separated string of usernames from an array (e.g. "User1, User2")
+    func stringFromUserList(userList: [PFUser]) -> String {
+        let usernameList = userList.map { user in user.username! }
+        let commaSeparatedUserList = ", ".join(usernameList)
+        
+        return commaSeparatedUserList
+    }
+    
+    required init (coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        likeBond = Bond<[PFUser]?>() { [unowned self] likeList in
+            if let likeList = likeList {
+                self.likesLabel.text = self.stringFromUserList(likeList)
+                self.likeButton.selected = contains(likeList, PFUser.currentUser()!)
+                self.likesIconImageview.hidden = (likeList.count == 0)
+            } else {
+                // if there is no list of users that like this post, reset everything
+                self.likesLabel.text = ""
+                self.likeButton.selected = false
+                self.likesIconImageview.hidden = true
+            }
+            
+        }
+            
+    }
+    
 }
