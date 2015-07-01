@@ -178,6 +178,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="QSa-7t-F2s" id="R0r-Mh-Fia"/>
+                                    <outlet property="delegate" destination="QSa-7t-F2s" id="gXZ-TU-ejJ"/>
                                 </connections>
                             </tableView>
                         </subviews>
