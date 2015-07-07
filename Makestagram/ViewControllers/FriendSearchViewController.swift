@@ -49,6 +49,10 @@ class FriendSearchViewController: UIViewController {
     // MARK: Update List
     
     func updateList(results: [AnyObject]?, error: NSError?) {
+        if let error = error {
+            ErrorHandling.defaultErrorHandler(error)
+        }
+        
         self.users = results as? [PFUser] ?? []
         self.tableView.reloadData()
         

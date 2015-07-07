@@ -29,6 +29,10 @@ class Post: PFObject, PFSubclassing {
         }
         
         imageFile.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            if let error = error {
+                ErrorHandling.defaultErrorHandler(error)
+            }
+            
             UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
         }
         

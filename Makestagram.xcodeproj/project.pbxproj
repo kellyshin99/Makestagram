@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0997141B4C60BC0004BAC9 /* PostSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0997131B4C60BC0004BAC9 /* PostSectionHeaderView.swift */; };
 		0A4AB3AE1B3DEF83001AB7C7 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB3AD1B3DEF83001AB7C7 /* TimelineViewController.swift */; };
 		0A4AB3B01B3DEFA3001AB7C7 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB3AF1B3DEFA3001AB7C7 /* PhotoViewController.swift */; };
 		0A4AB3B21B3DEFAF001AB7C7 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB3B11B3DEFAF001AB7C7 /* FriendSearchViewController.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A0997131B4C60BC0004BAC9 /* PostSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSectionHeaderView.swift; sourceTree = "<group>"; };
 		0A4AB3AD1B3DEF83001AB7C7 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		0A4AB3AF1B3DEFA3001AB7C7 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		0A4AB3B11B3DEFAF001AB7C7 /* FriendSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A09970C1B4C60A40004BAC9 /* PostHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0A0997131B4C60BC0004BAC9 /* PostSectionHeaderView.swift */,
+			);
+			path = PostHeader;
+			sourceTree = "<group>";
+		};
 		0A4AB3B51B3DFA9F001AB7C7 /* PhotoTaking */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +264,7 @@
 		0A4CB9561B41E97800004424 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A09970C1B4C60A40004BAC9 /* PostHeader */,
 				0AB012F81B45A46B00BA5E1E /* FriendSearch */,
 				0A4CB9571B41E97800004424 /* Timeline */,
 			);
@@ -620,6 +631,7 @@
 				0A4AB3B01B3DEFA3001AB7C7 /* PhotoViewController.swift in Sources */,
 				0AB013001B45A49600BA5E1E /* FriendSearchTableViewCell.swift in Sources */,
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
+				0A0997141B4C60BC0004BAC9 /* PostSectionHeaderView.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
 				0A4CB95D1B41F53000004424 /* ParseHelper.swift in Sources */,
 				0A4CB9591B41E99200004424 /* PostTableViewCell.swift in Sources */,
