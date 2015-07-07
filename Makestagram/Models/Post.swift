@@ -9,13 +9,15 @@
 import Foundation
 import Parse
 import Bond
+import ConvenienceKit
 
 class Post: PFObject, PFSubclassing {
    
     var image: Dynamic<UIImage?> = Dynamic(nil)
     var likes = Dynamic<[PFUser]?>(nil)
-    
     var photoUploadTask: UIBackgroundTaskIdentifier?
+    
+    static var imageCache: NSCacheSwift<String, UIImage>!
     
     func uploadPost() {
         let imageData = UIImageJPEGRepresentation(image.value, 0.8)
@@ -40,12 +42,15 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var user: PFUser?
     
     func downloadImage() {
+        image.value = Post.imageCache[self.imageFile!.name]
+        
         // if image is not downloaded yet, get it
         if (image.value == nil) {
             imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data: data, scale: 1.0)!
                     self.image.value = image
+                    Post.imageCache[self.imageFile!.name] = image
                 }
             }
         }
@@ -101,6 +106,7 @@ class Post: PFObject, PFSubclassing {
         dispatch_once(&onceToken) {
             //inform Parse about this sublcass
             self.registerSubclass()
+            Post.imageCache = NSCacheSwift<String, UIImage>()
         }
     }
     
