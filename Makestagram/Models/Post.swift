@@ -22,7 +22,7 @@ class Post: PFObject, PFSubclassing {
     func uploadPost() {
         let imageData = UIImageJPEGRepresentation(image.value, 0.8)
         let imageFile = PFFile(data: imageData)
-        imageFile.saveInBackgroundWithBlock(nil)
+        imageFile.saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
         
         photoUploadTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler { () -> Void in
             UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
@@ -35,7 +35,7 @@ class Post: PFObject, PFSubclassing {
         //any uploaded post should be associated with the current user
         user = PFUser.currentUser()
         self.imageFile = imageFile
-        saveInBackgroundWithBlock(nil)
+        saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
     }
     
     @NSManaged var imageFile: PFFile?
@@ -47,6 +47,9 @@ class Post: PFObject, PFSubclassing {
         // if image is not downloaded yet, get it
         if (image.value == nil) {
             imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                if let error = error {
+                    ErrorHandling.defaultErrorHandler(error)
+                }
                 if let data = data {
                     let image = UIImage(data: data, scale: 1.0)!
                     self.image.value = image
@@ -61,6 +64,9 @@ class Post: PFObject, PFSubclassing {
             return
         }
         ParseHelper.likesForPost(self, completionBlock: { (var likes: [AnyObject]?, error: NSError?) -> Void in
+            if let error = error {
+                ErrorHandling.defaultErrorHandler(error)
+            }
             likes = likes?.filter { like in like[ParseHelper.ParseLikeFromUser] != nil }
             self.likes.value = likes?.map { like in
                 let like = like as! PFObject

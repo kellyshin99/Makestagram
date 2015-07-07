@@ -77,6 +77,9 @@ class FriendSearchViewController: UIViewController {
 
         ParseHelper.getFollowingUserForUser(PFUser.currentUser()!) {
             (results: [AnyObject]?, error: NSError?) -> Void in
+            if let error = error {
+                ErrorHandling.defaultErrorHandler(error)
+            }
             let relations = results as? [PFObject] ?? []
             // use map to extract the User from a Follow object
             self.followingUsers = relations.map {
